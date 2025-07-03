@@ -23,7 +23,7 @@ export default function Home(){
     // <DndProvider backend={HTML5Backend}>
     //     <DroppableArea />
     // </DndProvider>
-    // <DndTimeline />
-    <AudioTimeline />
+    <DndTimeline />
+    // <AudioTimeline />
   );
 };
