@@ -11,7 +11,7 @@ const FileDropZone = ({ onFileAccepted }: FileDropZoneProps) => {
         onFileAccepted(acceptedFiles)
     }, [onFileAccepted])
 
-    const { getRootProps, getInputProps, isDragActive, open} = useDropzone({
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop
     })
 

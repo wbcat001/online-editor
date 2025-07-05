@@ -23,8 +23,8 @@ interface EnhancedItemDefinition extends ItemDefinition {
 }
 
 const DEFAULT_RANGE: Range = {
-	start: startOfDay(new Date()).getTime(),
-	end: endOfDay(new Date()).getTime(),
+	start: 0,
+	end: 100000,
 };
 
 function App() {
@@ -40,6 +40,7 @@ function App() {
 	const handleFileAccepted = useCallback(async (files: File[]) => {
 		const processedFiles = await Promise.all(files.map(processFile));
 		const newExternalItems = processedFiles.map((file) => createExternalItemFromFile(file, rows));
+		console.log("Accepted files:", newExternalItems);
 
 		setExternalItems((prev) => [...prev, ...newExternalItems]);
 	}, []);

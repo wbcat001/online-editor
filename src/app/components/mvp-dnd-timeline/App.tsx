@@ -9,8 +9,10 @@ import {
 	ItemType,
 	generateExternalItems,
 	generateItems,
+	processFile,
 	generateRows,
 } from "./utils";
+import FileDropZone from "./FileDropZone";
 
 const DEFAULT_RANGE: Range = {
 	start: startOfDay(new Date()).getTime(),
@@ -24,6 +26,13 @@ function App() {
 	const [externalItems, setExternalItems] = useState(
 		generateExternalItems(10, range, rows),
 	);
+
+	const handleFileAccepted = useCallback(async (files: File[]) => {
+			const processedFiles = await Promise.all(files.map(processFile));
+			const newExternalItems = processedFiles.map((file) => createExternalItemFromFile(file, rows));
+	
+			setExternalItems((prev) => [...prev, ...newExternalItems]);
+		}, []);
 
 	const onResizeEnd = useCallback((event: ResizeEndEvent) => {
 		const updatedSpan =
@@ -90,6 +99,7 @@ function App() {
 		>
 			
 			<Timeline items={items} rows={rows} />
+			<FileDropZone />
 			<ExternalList items={externalItems} />
 		</TimelineContext>
 	);

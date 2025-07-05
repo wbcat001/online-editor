@@ -26,6 +26,7 @@ function ExternalItem(props: ListItemProps) {
 			fileInfo,
 		},
 	});
+	console.log("duration", props.item.duration);
 
 	const style = {
 		height: "50px",
@@ -38,7 +39,7 @@ function ExternalItem(props: ListItemProps) {
 
 	return (
 		<div ref={setNodeRef} {...attributes} {...listeners} style={style}>
-			{props.item.id}
+			{fileInfo?.name || props.item.id}
 		</div>
 	);
 }

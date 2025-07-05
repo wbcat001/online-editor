@@ -25,6 +25,10 @@ function Timeline(props: TimelineProps) {
 		[props.items, range],
 	);
 
+	const renderItem = (item: EnhancedItemDefinition) => {
+	}
+	
+
 	return (
 		<div ref={setTimelineRef} style={style}>
 			{props.rows.map((row) => (
@@ -33,7 +37,7 @@ function Timeline(props: TimelineProps) {
 						<Subrow key={`${row.id}-${index}`}>
 							{subrow.map((item) => (
 								<Item id={item.id} key={item.id} span={item.span}>
-									{`Item ${item.id}`}
+									{`Item ${item.fileInfo ? item.fileInfo.name: item.id}`}
 								</Item>
 							))}
 						</Subrow>

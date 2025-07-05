@@ -10,6 +10,7 @@ export interface FileInfo {
 	size: number;
 	duration?: number; // ミリ秒単位の動画の長さ
 	thumnail?: string; // サムネイル画像のURL
+	file?: File;
 }
 
 export const processFile = async (file: File): Promise<FileInfo> => {
@@ -25,6 +26,14 @@ export const processFile = async (file: File): Promise<FileInfo> => {
 	if (file.type.startsWith("audio/") || file.type.startsWith("video/")) {
 		duration = await getMediaDuration(file);
 	}
+	console.log("Processing file:", {
+		id,
+		name: file.name,
+		type: file.type,
+		size: file.size,
+		duration,
+		thumnail,
+	});
 
 	return {
 		id,
@@ -33,6 +42,7 @@ export const processFile = async (file: File): Promise<FileInfo> => {
 		size: file.size,
 		duration,
 		thumnail,
+		file,
 	};
 };
 
@@ -108,8 +118,8 @@ const getRandomInRange = (min: number, max: number) => {
 	return Math.random() * (max - min) + min;
 };
 
-const DEFAULT_MIN_DURATION = minutesToMilliseconds(60);
-const DEFAULT_MAX_DURATION = minutesToMilliseconds(360);
+const DEFAULT_MIN_DURATION = minutesToMilliseconds(0.1);
+const DEFAULT_MAX_DURATION = minutesToMilliseconds(1);
 
 export const generateRandomSpan = (
 	range: Range,
