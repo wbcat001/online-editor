@@ -19,6 +19,7 @@ const DEFAULT_RANGE: Range = {
 
 function App() {
 	const [range, setRange] = useState(DEFAULT_RANGE);
+
 	const [rows] = useState(generateRows(5));
 	const [items, setItems] = useState(generateItems(10, range, rows));
 	const [externalItems, setExternalItems] = useState(
