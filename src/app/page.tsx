@@ -14,6 +14,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { DroppableArea } from "./components/mvp-dnd/droppable-area";
 import DndTimeline from "./components/mvp-external-dnd-timeline/App";
 import AudioTimeline from "./components/mvp-play-media/Timeline";
+import SampleReactFlow from './components/mvp-reactflow/sample';
 export default function Home(){
   // <DndProvider backend={HTML5Backend}>
   //   <div>draggable area</div>
@@ -24,6 +25,7 @@ export default function Home(){
     //     <DroppableArea />
     // </DndProvider>
     // <DndTimeline />
-    <AudioTimeline />
+    // <AudioTimeline />
+    <SampleReactFlow />
   );
 };

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@xyflow/react": "^12.8.1",
     "date-fns": "^4.1.0",
     "dnd-timeline": "^2.1.2",
     "moment": "^2.30.1",
